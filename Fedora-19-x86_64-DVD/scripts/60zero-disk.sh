@@ -1,0 +1,1 @@
+../../common/scripts/zero-disk.sh
