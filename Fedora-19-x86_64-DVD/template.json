@@ -2,73 +2,73 @@
     "builders": [
         {
             "boot_command": [
-                "<esc>", 
-                "<wait>", 
-                "vmlinuz ", 
-                "initrd=initrd.img ", 
-                "rd.live.check ", 
-                "biosdevname=0 ", 
-                "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg", 
+                "<esc>",
+                "<wait>",
+                "vmlinuz ",
+                "initrd=initrd.img ",
+                "rd.live.check ",
+                "biosdevname=0 ",
+                "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg",
                 "<enter>"
-            ], 
-            "boot_wait": "2s", 
-            "disk_size": 20480, 
-            "guest_os_type": "Fedora_64", 
-            "http_directory": "http/", 
-            "iso_checksum": "6e7e263e607cfcadc90ea2ef5668aa3945d9eca596485a7a1f8a9f2478cc7084", 
-            "iso_checksum_type": "sha256", 
-            "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/19/Fedora/x86_64/iso/Fedora-19-x86_64-DVD.iso", 
-            "name": "Fedora-19-x86_64-DVD", 
-            "shutdown_command": "systemctl poweroff", 
-            "ssh_password": "qwerty", 
-            "ssh_port": 22, 
-            "ssh_username": "root", 
-            "ssh_wait_timeout": "20m", 
-            "type": "virtualbox", 
+            ],
+            "boot_wait": "2s",
+            "disk_size": 20480,
+            "guest_os_type": "Fedora_64",
+            "http_directory": "http/",
+            "iso_checksum": "6e7e263e607cfcadc90ea2ef5668aa3945d9eca596485a7a1f8a9f2478cc7084",
+            "iso_checksum_type": "sha256",
+            "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/19/Fedora/x86_64/iso/Fedora-19-x86_64-DVD.iso",
+            "name": "Fedora-19-x86_64-DVD",
+            "shutdown_command": "systemctl poweroff",
+            "ssh_password": "qwerty",
+            "ssh_port": 22,
+            "ssh_username": "root",
+            "ssh_wait_timeout": "20m",
+            "type": "virtualbox",
             "vboxmanage": [
                 [
-                    "modifyvm", 
-                    "{{.Name}}", 
-                    "--memory", 
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
                     "512"
-                ], 
+                ],
                 [
-                    "modifyvm", 
-                    "{{.Name}}", 
-                    "--cpus", 
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
                     "1"
-                ], 
+                ],
                 [
-                    "modifyvm", 
-                    "{{.Name}}", 
-                    "--rtcuseutc", 
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--rtcuseutc",
                     "on"
-                ], 
+                ],
                 [
-                    "modifyvm", 
-                    "{{.Name}}", 
-                    "--bioslogodisplaytime", 
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--bioslogodisplaytime",
                     "1"
                 ]
-            ], 
+            ],
             "virtualbox_version_file": "/etc/virtualbox-version"
         }
-    ], 
+    ],
     "post-processors": [
         {
             "type": "vagrant"
         }
-    ], 
+    ],
     "provisioners": [
         {
             "scripts": [
-                "scripts/10extlinux.sh", 
-                "scripts/20virtualbox.sh", 
-                "scripts/30vagrant.sh", 
-                "scripts/40network.sh", 
-                "scripts/50lock-root.sh", 
+                "scripts/10extlinux.sh",
+                "scripts/20virtualbox.sh",
+                "scripts/30vagrant.sh",
+                "scripts/40network.sh",
+                "scripts/50lock-root.sh",
                 "scripts/60zero-disk.sh"
-            ], 
+            ],
             "type": "shell"
         }
     ]
