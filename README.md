@@ -1,9 +1,7 @@
 packer-templates
 ================
 
-This is a collection of Packer templates, kickstart files, and shell scripts
-that can be used to build VirtualBox-backed Vagrant boxes from canonical Linux
-distribution ISOs.
+This is a collection of Packer templates, kickstart files, and shell scripts that can be used to build VirtualBox-backed Vagrant boxes from canonical Linux distribution ISOs.
 
 
 Prerequisites
@@ -21,9 +19,7 @@ Usage
 	$ cd packer-templates/<desired template directory>
 	$ packer build template.json
 
-Once the build is complete, Packer will output a Vagrant .box file in the
-current working directory.  You can add this box to your Vagrant installation
-with `vagrant box add <name> </path/to/.box file>`.
+Once the build is complete, Packer will output a Vagrant .box file in the current working directory.  You can add this box to your Vagrant installation with `vagrant box add <name> </path/to/.box file>`.
 
 
 Helpful Documentation
