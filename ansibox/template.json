@@ -66,6 +66,7 @@
                 "scripts/10extlinux.sh",
                 "scripts/20virtualbox.sh",
                 "scripts/30vagrant.sh",
+                "scripts/35pyrax.sh",
                 "scripts/40network.sh",
                 "scripts/50lock-root.sh",
                 "scripts/60zero-disk.sh"
