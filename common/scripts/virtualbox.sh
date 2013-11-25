@@ -2,15 +2,19 @@
 
 # Check which Packer builder type is being used
 if [ $PACKER_BUILDER_TYPE = "virtualbox" ]; then
-    # Install the VirtualBox Guest Additions
-    mount VBoxGuestAdditions.iso /mnt/
-    sh /mnt/VBoxLinuxAdditions.run
-
-    # Cleanup
-    umount /mnt/
-    rm --force VBoxGuestAdditions.iso
-    
-    # Fix permissions and SELinux context for Packer’s virtualbox_version_file
-    chmod 0644 /etc/virtualbox-version
-    chcon system_u:object_r:etc_t:s0 /etc/virtualbox-version
+  # Required for the VirtualBox Guest Additions for Linux
+  # http://www.virtualbox.org/manual/ch04.html#idp55630656
+  yum install --assumeyes dkms gcc make
+  
+  # Install the VirtualBox Guest Additions
+  mount VBoxGuestAdditions.iso /mnt/
+  sh /mnt/VBoxLinuxAdditions.run
+  
+  # Cleanup
+  umount /mnt/
+  rm --force VBoxGuestAdditions.iso
+      
+  # Fix permissions and SELinux context for Packer’s virtualbox_version_file
+  chmod 0644 /etc/virtualbox-version
+  chcon system_u:object_r:etc_t:s0 /etc/virtualbox-version
 fi
