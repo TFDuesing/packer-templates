@@ -4,7 +4,7 @@
 if [ $PACKER_BUILDER_TYPE = "virtualbox" ]; then
   # Required for the VirtualBox Guest Additions for Linux
   # http://www.virtualbox.org/manual/ch04.html#idp55630656
-  yum install --assumeyes bzip2 dkms gcc make
+  yum install --assumeyes bzip2 dkms gcc kernel-devel make
   
   # Required to prevent VBoxLinuxAdditions.run from throwing errors
   yum install --assumeyes which
