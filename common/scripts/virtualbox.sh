@@ -3,10 +3,10 @@
 # Check which Packer builder type is being used
 if [ $PACKER_BUILDER_TYPE = "virtualbox" ]; then
   # Required for the VirtualBox Guest Additions for Linux
-  # http://www.virtualbox.org/manual/ch04.html#idp55630656
+  # http://www.virtualbox.org/manual/ch04.html
   yum install --assumeyes bzip2 dkms gcc kernel-devel make
   
-  # Required to prevent VBoxLinuxAdditions.run from throwing errors
+  # Required to prevent VBoxLinuxAdditions.run from throwing (harmless) errors
   yum install --assumeyes which
   
   # Install the VirtualBox Guest Additions
