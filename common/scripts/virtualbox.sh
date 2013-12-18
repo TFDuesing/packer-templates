@@ -10,12 +10,14 @@ if [ $PACKER_BUILDER_TYPE = "virtualbox" ]; then
   yum install --assumeyes which
   
   # Install the VirtualBox Guest Additions
-  mount VBoxGuestAdditions.iso /mnt/
-  sh /mnt/VBoxLinuxAdditions.run
+  mkdir /mnt/cdrom
+  mount /root/VBoxGuestAdditions.iso /mnt/cdrom
+  sh /mnt/cdrom/VBoxLinuxAdditions.run
   
   # Cleanup
-  umount /mnt/
-  rm --force VBoxGuestAdditions.iso
+  umount /mnt/cdrom
+  rmdir /mnt/cdrom
+  rm --force /root/VBoxGuestAdditions.iso
       
   # Fix permissions and SELinux context for Packer’s virtualbox_version_file
   chmod 0644 /etc/virtualbox-version
