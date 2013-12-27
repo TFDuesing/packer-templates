@@ -2,13 +2,13 @@
 
 # Remove unnecessary packages (and their dependencies)
 # which can’t be removed until after the installation process
-yum --assumeyes autoremove authconfig linux-firmware
+yum --assumeyes autoremove authconfig firewalld linux-firmware
 
 # Clean up old yum repo data & logs
 yum clean all
-yum history new
 rm --recursive --force /var/lib/yum/yumdb/*
 rm --recursive --force /var/lib/yum/history/*
+yum history new
 truncate --no-create --size=0 /var/log/yum.log
 
 # Force the filesystem to reclaim space from deleted files
