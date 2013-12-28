@@ -6,9 +6,9 @@ yum --assumeyes autoremove authconfig firewalld linux-firmware
 
 # Clean up old yum repo data & logs
 yum clean all
+yum history new
 rm --recursive --force /var/lib/yum/yumdb/*
 rm --recursive --force /var/lib/yum/history/*
-yum history new
 truncate --no-create --size=0 /var/log/yum.log
 
 # Change any incorrect SELinux context labels
