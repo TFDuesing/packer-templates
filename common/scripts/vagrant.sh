@@ -25,7 +25,7 @@ mv vagrant.pub /home/vagrant/.ssh/authorized_keys
 chown --recursive vagrant:vagrant /home/vagrant/.ssh/
 chmod 0700 /home/vagrant/.ssh/
 chmod 0600 /home/vagrant/.ssh/authorized_keys
-chcon --recursive unconfined_u:object_r:user_home_t:s0 /home/vagrant/.ssh/
+chcon --recursive unconfined_u:object_r:ssh_home_t:s0 /home/vagrant/.ssh/
 
 # Delete and lock root password
 passwd --delete root
