@@ -72,6 +72,7 @@
     ],
     "post-processors": [
         {
+            "output": "{{.BuildName}}-x86_64-{{.Provider}}.box",
             "type": "vagrant"
         }
     ],
