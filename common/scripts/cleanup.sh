@@ -11,6 +11,9 @@ rm --recursive --force /var/lib/yum/yumdb/*
 rm --recursive --force /var/lib/yum/history/*
 truncate --no-create --size=0 /var/log/yum.log
 
+# Remove random-seed, so it’s not the same in every image
+rm --force /var/lib/random-seed
+
 # Change any incorrect SELinux context labels
 fixfiles -R -a restore
 
