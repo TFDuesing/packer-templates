@@ -25,7 +25,7 @@
             "ssh_port": 22,
             "ssh_username": "root",
             "ssh_wait_timeout": "60m",
-            "type": "virtualbox",
+            "type": "virtualbox-iso",
             "vboxmanage": [
                 [
                     "modifyvm",
