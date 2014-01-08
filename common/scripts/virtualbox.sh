@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Check which Packer builder type is being used
-if [ $PACKER_BUILDER_TYPE = "virtualbox" ]; then
+if [ $PACKER_BUILDER_TYPE = "virtualbox-iso" ]; then
   # Required for the VirtualBox Guest Additions for Linux
   # http://www.virtualbox.org/manual/ch04.html
   yum install --assumeyes bzip2 dkms gcc kernel-devel make
