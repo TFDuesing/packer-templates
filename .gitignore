@@ -1,13 +1,13 @@
 .DS_Store
 packer_cache/
 *.box
-*.vdi
-*.vmem
 *.lck
-*.vmdk
+*.log
 *.nvram
 *.plist
+*.vdi
+*.vmdk
+*.vmem
 *.vmsd
 *.vmx
 *.vmxf
-*.log
