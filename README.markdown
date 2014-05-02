@@ -19,7 +19,7 @@ Usage
 	$ cd packer-templates/<desired template directory>
 	$ packer build template.json
 
-Once the build is complete, Packer will output a Vagrant .box file in the current working directory.  You can add this box to your Vagrant installation with `vagrant box add <name> </path/to/.box file>`.
+Once the build is complete, Packer will output a Vagrant .box file in the current working directory.  You can add this box to your Vagrant installation with `vagrant box add --name <name-of-box> </path/to/.box file>`.
 
 
 Helpful Documentation
