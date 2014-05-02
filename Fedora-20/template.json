@@ -105,7 +105,7 @@
             }
         }
     ],
-    "description": "This Packer template can be used to build minimal Fedora 20 base boxes for\nVagrant\u2019s VirtualBox and VMware providers, starting from Fedora\u2019s \u201cInstall DVD\u201d ISO for x86_64 architectures.",
+    "description": "This Packer template can be used to build minimal Fedora 20 base boxes for\nVagrant\u2019s VirtualBox and VMware providers, starting from Fedora\u2019s \u201cInstall DVD\u201d\nISO for x86_64 architectures.",
     "post-processors": [
         {
             "output": "Fedora-20-x86_64-{{.Provider}}.box",
