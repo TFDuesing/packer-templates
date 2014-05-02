@@ -19,8 +19,8 @@ chcon system_u:object_r:etc_t:s0 /etc/sudoers.d/vagrant
 
 # Install Vagrant’s “insecure” public key
 mkdir --parents /home/vagrant/.ssh/
-curl --remote-name \
-    https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub
+curl --location --remote-name \
+    https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub
 mv vagrant.pub /home/vagrant/.ssh/authorized_keys
 chown --recursive vagrant:vagrant /home/vagrant/.ssh/
 chmod 0700 /home/vagrant/.ssh/
