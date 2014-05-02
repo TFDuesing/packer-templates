@@ -1,0 +1,1 @@
+../../common/scripts/vmware-fusion.sh
