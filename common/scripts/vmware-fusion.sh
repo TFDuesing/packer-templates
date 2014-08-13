@@ -3,6 +3,7 @@
 # Check which Packer builder type is being used
 if [ $PACKER_BUILDER_TYPE = "vmware-iso" ]; then
   # Required for VMware Tools for Linux Guests
+  # http://kb.vmware.com/kb/1018414
   # http://pubs.vmware.com/fusion-6/topic/com.vmware.fusion.help.doc/GUID-08BB9465-D40A-4E16-9E15-8C016CC8166F.html
   yum install --assumeyes tar perl net-tools make gcc kernel-devel
   
