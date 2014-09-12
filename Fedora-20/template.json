@@ -65,6 +65,13 @@
                     "{{.Name}}",
                     "--rtcuseutc",
                     "on"
+                ],
+                [
+                    "storagectl",
+                    "{{.Name}}",
+                    "--name",
+                    "IDE Controller",
+                    "--remove"
                 ]
             ],
             "virtualbox_version_file": "/etc/virtualbox-version",
