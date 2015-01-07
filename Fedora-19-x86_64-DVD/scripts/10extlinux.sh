@@ -1,1 +1,0 @@
-../../common/scripts/extlinux.sh
