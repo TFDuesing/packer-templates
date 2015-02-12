@@ -6,6 +6,11 @@ sed --in-place '/^UUID/d' /etc/sysconfig/network-scripts/ifcfg-eth*
 # Remove random-seed, so it’s not the same in every image
 rm --force /var/lib/systemd/random-seed
 
+# Truncate machine-id, for the same reasons random-seed is removed
+# Note: this image will not boot if /etc/machine-id is not present, but systemd
+# will generate a new machine ID if /etc/machine-id is present but empty
+truncate --size=0 /etc/machine-id
+
 # Clean up old yum repo data & logs
 yum clean all
 yum history new
