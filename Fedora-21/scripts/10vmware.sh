@@ -13,6 +13,9 @@ if [ $PACKER_BUILDER_TYPE = "vmware-iso" ]; then
   tar -zxpf /mnt/cdrom/VMwareTools-*.tar.gz -C /tmp
   /tmp/vmware-tools-distrib/vmware-install.pl --default
 
+  # Disable ThinPrint service
+  systemctl vmware-tools-thinprint.service
+
   # Cleanup
   yum autoremove --assumeyes tar net-tools gcc kernel-devel
   umount /mnt/cdrom

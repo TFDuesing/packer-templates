@@ -11,6 +11,9 @@ if [ $PACKER_BUILDER_TYPE = "virtualbox-iso" ]; then
   mount /root/VBoxGuestAdditions.iso /mnt/cdrom
   sh /mnt/cdrom/VBoxLinuxAdditions.run
 
+  # Disable VirtualBox X11 Guest Additions
+  systemctl disable vboxadd-x11.service
+
   # Cleanup
   yum autoremove --assumeyes bzip2 dkms kernel-devel
   umount /mnt/cdrom
