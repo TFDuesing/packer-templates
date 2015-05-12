@@ -14,7 +14,7 @@ if [ $PACKER_BUILDER_TYPE = "vmware-iso" ]; then
   /tmp/vmware-tools-distrib/vmware-install.pl --default
 
   # Disable ThinPrint service
-  systemctl vmware-tools-thinprint.service
+  systemctl disable vmware-tools-thinprint.service
 
   # Cleanup
   yum autoremove --assumeyes tar net-tools gcc kernel-devel
