@@ -53,12 +53,6 @@
                     "virtio"
                 ],
                 [
-                    "modifyvm",
-                    "{{.Name}}",
-                    "--paravirtprovider",
-                    "kvm"
-                ],
-                [
                     "storagectl",
                     "{{.Name}}",
                     "--name",
