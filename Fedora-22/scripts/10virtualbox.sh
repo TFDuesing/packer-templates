@@ -20,6 +20,10 @@ if [ $PACKER_BUILDER_TYPE = "virtualbox-iso" ]; then
   rmdir /mnt/cdrom
   rm --force /root/VBoxGuestAdditions.iso
 
+  # Prevent dnf from updating the kernel (and related packages)
+  # in order to preserve the VirtualBox kernel extensions
+  echo "exclude=kernel*" >> /etc/dnf/dnf.conf
+
   # Fix permissions and SELinux context for Packer’s virtualbox_version_file
   chmod 0644 /root/virtualbox-version
   chcon system_u:object_r:admin_home_t:s0 /root/virtualbox-version

@@ -12,7 +12,6 @@ rm --force /var/lib/systemd/random-seed
 truncate --size=0 /etc/machine-id
 
 # Clean up old dnf repo data & logs
-dnf --assumeyes autoremove
 dnf clean all
 rm --recursive --force /var/lib/dnf/history/*
 rm --recursive --force /var/lib/dnf/yumdb/*
