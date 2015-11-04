@@ -1,0 +1,107 @@
+{
+    "builders": [
+        {
+            "boot_command": [
+                "c",
+                "<wait>",
+                "linuxefi /images/pxeboot/vmlinuz ",
+                "inst.stage2=hd:LABEL=Fedora-S-23-x86_64 ",
+                "rd.live.check ",
+                "net.ifnames=0 ",
+                "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg",
+                "<enter>",
+                "initrdefi /images/pxeboot/initrd.img",
+                "<enter>",
+                "boot",
+                "<enter>"
+            ],
+            "boot_wait": "5s",
+            "disk_size": 20480,
+            "guest_os_type": "Fedora_64",
+            "hard_drive_interface": "sata",
+            "http_directory": "kickstart/",
+            "iso_checksum": "32e0a15a1c71d0e2fd36a0af5b67a3b3af82976d2dfca0aefcb90d42f2ae6844",
+            "iso_checksum_type": "sha256",
+            "iso_interface": "sata",
+            "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Server/x86_64/iso/Fedora-Server-netinst-x86_64-23.iso",
+            "name": "virtualbox",
+            "shutdown_command": "systemctl poweroff",
+            "ssh_password": "qwerty",
+            "ssh_timeout": "30m",
+            "ssh_username": "root",
+            "type": "virtualbox-iso",
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--bioslogodisplaytime",
+                    "1"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--chipset",
+                    "ich9"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "1"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--firmware",
+                    "efi"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "512"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--nictype1",
+                    "virtio"
+                ],
+                [
+                    "storagectl",
+                    "{{.Name}}",
+                    "--name",
+                    "IDE Controller",
+                    "--remove"
+                ]
+            ],
+            "virtualbox_version_file": "/root/virtualbox-version",
+            "vm_name": "Fedora-23"
+        }
+    ],
+    "description": "This Packer template can be used to build minimal Fedora 23 base boxes for\nVagrant\u2019s VirtualBox provider, starting from Fedora 23 Server\u2019s\nnetinstall ISO for x86_64 architectures.",
+    "post-processors": [
+        {
+            "output": "Fedora-23-x86_64-{{.Provider}}.box",
+            "type": "vagrant"
+        }
+    ],
+    "provisioners": [
+        {
+            "only": [
+                "virtualbox"
+            ],
+            "scripts": [
+                "scripts/10virtualbox.sh"
+            ],
+            "type": "shell"
+        },
+        {
+            "scripts": [
+                "scripts/20vagrant.sh",
+                "scripts/30cleanup.sh"
+            ],
+            "type": "shell"
+        }
+    ]
+}
