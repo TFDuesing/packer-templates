@@ -77,9 +77,37 @@
             ],
             "virtualbox_version_file": "/root/virtualbox-version",
             "vm_name": "Fedora-23"
+        },
+        {
+            "boot_command": [
+                "<tab>",
+                "<wait>",
+                " net.ifnames=0 ",
+                "inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg",
+                "<enter>"
+            ],
+            "boot_wait": "10s",
+            "disk_size": 20480,
+            "guest_os_type": "fedora-64",
+            "http_directory": "kickstart/",
+            "iso_checksum": "32e0a15a1c71d0e2fd36a0af5b67a3b3af82976d2dfca0aefcb90d42f2ae6844",
+            "iso_checksum_type": "sha256",
+            "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Server/x86_64/iso/Fedora-Server-netinst-x86_64-23.iso",
+            "name": "vmware",
+            "shutdown_command": "systemctl poweroff",
+            "ssh_password": "qwerty",
+            "ssh_timeout": "30m",
+            "ssh_username": "root",
+            "tools_upload_flavor": "linux",
+            "type": "vmware-iso",
+            "vm_name": "Fedora-23",
+            "vmx_data": {
+                "memsize": "512",
+                "numvcpus": "1"
+            }
         }
     ],
-    "description": "This Packer template can be used to build minimal Fedora 23 base boxes for\nVagrant\u2019s VirtualBox provider, starting from Fedora 23 Server\u2019s\nnetinstall ISO for x86_64 architectures.",
+    "description": "This Packer template can be used to build minimal Fedora 23 base boxes for\nVagrant\u2019s VirtualBox and VMware providers, starting from Fedora 23 Server\u2019s\nnetinstall ISO for x86_64 architectures.",
     "post-processors": [
         {
             "output": "Fedora-23-x86_64-{{.Provider}}.box",
@@ -93,6 +121,15 @@
             ],
             "scripts": [
                 "scripts/10virtualbox.sh"
+            ],
+            "type": "shell"
+        },
+        {
+            "only": [
+                "vmware"
+            ],
+            "scripts": [
+                "scripts/10vmware.sh"
             ],
             "type": "shell"
         },
