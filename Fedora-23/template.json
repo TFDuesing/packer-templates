@@ -109,34 +109,36 @@
     ],
     "description": "This Packer template can be used to build minimal Fedora 23 base boxes for\nVagrant\u2019s VirtualBox and VMware providers, starting from Fedora 23 Server\u2019s\nnetinstall ISO for x86_64 architectures.",
     "post-processors": [
-        {
-            "output": "Fedora-23-x86_64-{{.Provider}}-{{user `box-version`}}.box",
-            "type": "vagrant"
-        },
-        {
-            "artifact": "{{user `atlas-username`}}/Fedora-23",
-            "artifact_type": "vagrant.box",
-            "metadata": {
-                "provider": "vmware_desktop",
-                "version": "{{user `box-version`}}"
+        [
+            {
+                "output": "Fedora-23-x86_64-{{.Provider}}-{{user `box-version`}}.box",
+                "type": "vagrant"
             },
-            "only": [
-                "vmware"
-            ],
-            "type": "atlas"
-        },
-        {
-            "artifact": "{{user `atlas-username`}}/Fedora-23",
-            "artifact_type": "vagrant.box",
-            "metadata": {
-                "provider": "virtualbox",
-                "version": "{{user `box-version`}}"
+            {
+                "artifact": "{{user `atlas-username`}}/Fedora-23",
+                "artifact_type": "vagrant.box",
+                "metadata": {
+                    "provider": "vmware_desktop",
+                    "version": "{{user `box-version`}}"
+                },
+                "only": [
+                    "vmware"
+                ],
+                "type": "atlas"
             },
-            "only": [
-                "virtualbox"
-            ],
-            "type": "atlas"
-        }
+            {
+                "artifact": "{{user `atlas-username`}}/Fedora-23",
+                "artifact_type": "vagrant.box",
+                "metadata": {
+                    "provider": "virtualbox",
+                    "version": "{{user `box-version`}}"
+                },
+                "only": [
+                    "virtualbox"
+                ],
+                "type": "atlas"
+            }
+        ]
     ],
     "provisioners": [
         {
