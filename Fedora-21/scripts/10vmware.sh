@@ -23,7 +23,7 @@ if [ $PACKER_BUILDER_TYPE = "vmware-iso" ]; then
   rm --force /root/linux.iso
   rm --force --recursive /tmp/vmware*
 
-  # Prevent yum from updating the kernel (and related packages)
+  # Prevent yum from updating the kernel
   # in order to preserve the VMware kernel extensions
-  echo "exclude=kernel*" >> /etc/yum.conf
+  echo "exclude=kernel-core" >> /etc/yum.conf
 fi

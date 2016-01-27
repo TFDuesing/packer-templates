@@ -20,9 +20,9 @@ if [ $PACKER_BUILDER_TYPE = "virtualbox-iso" ]; then
   rmdir /mnt/cdrom
   rm --force /root/VBoxGuestAdditions.iso
 
-  # Prevent yum from updating the kernel (and related packages)
+  # Prevent yum from updating the kernel
   # in order to preserve the VirtualBox kernel extensions
-  echo "exclude=kernel*" >> /etc/yum.conf
+  echo "exclude=kernel-core" >> /etc/yum.conf
 
   # Fix permissions and SELinux context for Packer’s virtualbox_version_file
   chmod 0644 /root/virtualbox-version
