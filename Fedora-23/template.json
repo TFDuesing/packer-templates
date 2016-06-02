@@ -68,6 +68,12 @@
                     "virtio"
                 ],
                 [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--vrde",
+                    "off"
+                ],
+                [
                     "storagectl",
                     "{{.Name}}",
                     "--name",
